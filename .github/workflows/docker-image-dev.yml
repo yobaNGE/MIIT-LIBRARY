@@ -32,8 +32,8 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
-          docker stop angular-container-dev
-          docker rm angular-container-dev
-          docker rmi angular-library-dev:latest
+          docker stop angular-container-dev || true
+          docker rm angular-container-dev || true
+          docker image inspect angular-library-dev:latest > /dev/null && docker rmi angular-library-dev:latest || true
           docker pull docker.io/yobange/angular-library-dev:latest
           docker run -d -p 81:80 --name angular-container-dev docker.io/yobange/angular-library-dev:latest
