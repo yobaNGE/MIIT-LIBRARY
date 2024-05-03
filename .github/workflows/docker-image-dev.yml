@@ -34,6 +34,6 @@ jobs:
         script: |
           docker stop angular-container-dev
           docker rm angular-container-dev
-          docker rmi angular-library-dev:latest
+          docker rmi yobange/angular-library-dev:latest
           docker pull docker.io/yobange/angular-library-dev:latest
           docker run -d -p 81:80 --name angular-container-dev docker.io/yobange/angular-library-dev:latest
